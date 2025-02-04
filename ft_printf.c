@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 #include <stdio.h>
-#include <stdarg.h>
+
 
 int	ft_printf(char *format, ...)
 {
@@ -27,6 +27,10 @@ int	ft_printf(char *format, ...)
 			{
 
 			}
+			else if(format[i + 1] == 'u')
+			{
+
+			}
 			else if(format[i + 1] == 'c')
 			{
 
@@ -35,9 +39,14 @@ int	ft_printf(char *format, ...)
 			{
 
 			}
+			else if(format[i + 1] == 'x' || format[i + 1] == 'X')
+			{
+
+			}
 		}
 		else
 			write(1, &format[i], 1);
+		i++;
 	}
 
 

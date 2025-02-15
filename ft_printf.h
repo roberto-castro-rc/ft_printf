@@ -4,4 +4,6 @@
 #include <unistd.h>
 #include <stdarg.h>
 
+int	ft_print_caracter(int c, int convert_number);
+
 #endif

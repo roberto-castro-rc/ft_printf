@@ -22,6 +22,19 @@ int	ft_printf(char *format, ...)
 			if(format[i + 1] == '%')
 			{
 				write(1, "%%", 1);
+				count++;
+			}
+			else if(format[i + 1] == 'c')
+			{
+				count += ft_print_caracter(va_arg(args, int), 0);
+			}
+			else if(format[i + 1] == 's')
+			{
+
+			}
+			else if(format[i + 1] == 'p')
+			{
+
 			}
 			else if(format[i + 1] == 'd' || format[i + 1] == 'i')
 			{
@@ -31,24 +44,18 @@ int	ft_printf(char *format, ...)
 			{
 
 			}
-			else if(format[i + 1] == 'c')
-			{
 
-			}
-			else if(format[i + 1] == 's')
-			{
-
-			}
 			else if(format[i + 1] == 'x' || format[i + 1] == 'X')
 			{
 
 			}
 		}
 		else
+		{
 			write(1, &format[i], 1);
-		i++;
+			i++;
+		}
 	}
-
-
-
+	va_end(args);
+	return (count);
 }

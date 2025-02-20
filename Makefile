@@ -1,44 +1,51 @@
-# Nome do executável
-NAME = ft_printf
+# Nome do arquivo final
+NAME = libftprintf.a
 
 # Compilador
-CC = gcc
-
-# Flags de compilação
+CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
-# Arquivos fonte
-SRC =  ft_print_caracter.c ft_print_number.c
+# Diretórios
+SRCDIR = src
+INCDIR = includes
+OBJDIR = obj
 
-# Arquivos objeto (convertendo .c para .o)
-OBJ = $(SRC:.c=.o)
+# Arquivos fontes
+SRCS = $(SRCDIR)/ft_printf.c \
+       $(SRCDIR)/ft_print_char.c \
+       $(SRCDIR)/ft_print_str.c \
+       $(SRCDIR)/ft_print_nbr.c \
+       $(SRCDIR)/ft_print_hex.c \
+	   $(SRCDIR)/ft_print_unsigned_int.c \
+	   $(SRCDIR)/ft_print_pointer.c
 
-FOR_WINDOWS = $(SRC:.c=.exe)
+# Objetos (convertendo .c para .o)
+OBJS = $(SRCS:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
 
-# Regra principal (compila o programa)
+# Regras do Makefile
 all: $(NAME)
 
-# Como compilar o executável
-$(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+# Compilar os objetos e criar a biblioteca estática
+$(NAME): $(OBJS)
+	ar rcs $(NAME) $(OBJS)
 
-# Como compilar arquivos .c em .o
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+# Compilar os arquivos fontes para objetos
+$(OBJDIR)/%.o: $(SRCDIR)/%.c | $(OBJDIR)
+	$(CC) $(CFLAGS) -I$(INCDIR) -c $< -o $@
 
-# Remove arquivos objeto
+# Criar diretório obj se não existir
+$(OBJDIR):
+	mkdir -p $(OBJDIR)
+
+# Limpar arquivos objetos
 clean:
-	rm -f $(OBJ)
+	rm -rf $(OBJDIR)
 
-wclean:
-	rm -f $(FOR_WINDOWS) $(OBJ) $(NAME)
-
-# Remove arquivos objeto e executável
+# Limpar objetos e biblioteca
 fclean: clean
 	rm -f $(NAME)
 
-# Refaz tudo do zero
+# Recompilar tudo do zero
 re: fclean all
 
-# Não trata arquivos como targets
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus

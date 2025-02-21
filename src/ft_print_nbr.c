@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_nbr.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rpaulo-c <rpaulo-c@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/21 15:00:33 by rpaulo-c          #+#    #+#             */
+/*   Updated: 2025/02/21 15:00:33 by rpaulo-c         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
-#include <stdio.h>
+
 int	ft_print_nbr(int number)
 {
-	int	count_caracter;
 	long	copy_number;
+	int		count_caracter;
 
 	copy_number = number;
 	count_caracter = 0;

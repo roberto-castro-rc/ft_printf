@@ -1,9 +1,10 @@
 #include "ft_printf.h"
 #include <stdio.h>
 
-int	ft_print_hex(long long number, char X_or_x)
+
+int	ft_print_hex(unsigned long number, char X_or_x)
 {
-	char	result[20];
+	char	result[16];
 	int		count;
 	int		i;
 
@@ -27,4 +28,3 @@ int	ft_print_hex(long long number, char X_or_x)
 		count += write(1, &result[i], 1);
 	return (count);
 }
-

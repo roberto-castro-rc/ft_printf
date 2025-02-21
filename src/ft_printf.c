@@ -15,6 +15,7 @@ int	ft_printf(const char *format, ...)
 
 	va_start(args, format);
 	i = 0;
+	count = 0;
 	while (format[i] != '\0')
 	{
 		if(format[i] == '%')
@@ -37,25 +38,25 @@ int	ft_printf(const char *format, ...)
 			}
 			else if(format[i + 1] == 'u')
 			{
-				ft_print_unsigned_int(va_arg(args, int));
+				count += ft_print_unsigned_int(va_arg(args, int));
 			}
 			else if(format[i + 1] == 'x')
 			{
-				ft_print_hex(va_arg(args, int), 'x');
+				count += ft_print_hex(va_arg(args, unsigned int), 'x');
 			}
 			else if(format[i + 1] == 'X')
 			{
-				ft_print_hex(va_arg(args, int), 'X');
+				count += ft_print_hex(va_arg(args, unsigned int), 'X');
 			}
 			else if(format[i + 1] == 'p')
 			{
-				ft_print_pointer(va_arg(args, void *));
+				count += ft_print_pointer(va_arg(args, void *));
 			}
 			i += 2;
 		}
 		else
 		{
-			write(1, &format[i], 1);
+			count += ft_print_char(format[i], 0);
 			i++;
 		}
 	}

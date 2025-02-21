@@ -3,14 +3,19 @@
 
 int	ft_print_str(char *str)
 {
-	int	count_caracter;
+	int	count;
 
-	count_caracter = 0;
+	if (!str)
+	{
+		count = write(1, "(null)", 6);
+		return (count);
+	}
+	count = 0;
 	while (*str)
 	{
 		write(1, str, 1);
 		str++;
-		count_caracter++;
+		count++;
 	}
-	return (count_caracter);
+	return (count);
 }

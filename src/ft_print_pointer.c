@@ -1,6 +1,7 @@
 #include "ft_printf.h"
 #include <stdio.h>
 
+
 int	ft_print_pointer(void *pointer)
 {
 	int				count;
@@ -20,3 +21,11 @@ int	ft_print_pointer(void *pointer)
 	count += ft_print_hex(address, 'x');
 	return (count);
 }
+
+// int main()
+// {
+// 	unsigned long pointer = 0x123456789abcdef;
+// 	printf("pointer: %p\n", 16);
+// 	ft_print_pointer(16);
+// 	return (0);
+// }

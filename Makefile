@@ -30,8 +30,8 @@ $(NAME): $(OBJS)
 	ar rcs $(NAME) $(OBJS)
 
 # Compilar os arquivos fontes para objetos
-$(OBJDIR)/%.o: $(SRCDIR)/%.c | $(OBJDIR)
-	$(CC) $(CFLAGS) -I$(INCDIR) -c $< -o $@
+$(OBJDIR)/%.o: $(SRCDIR)/%.c $(SRCDIR)/ft_printf.h | $(OBJDIR)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 # Criar diretório obj se não existir
 $(OBJDIR):
